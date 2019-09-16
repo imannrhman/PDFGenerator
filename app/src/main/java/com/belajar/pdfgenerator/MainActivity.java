@@ -24,7 +24,7 @@ import com.itextpdf.text.DocumentException;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.List;
+
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
@@ -32,6 +32,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "PdfCreatorActivity";
@@ -141,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         PackageManager packageManager = getPackageManager();
         Intent testIntent =  new Intent(Intent.ACTION_VIEW);
         testIntent.setType("application/pdf");
-        List list = (List) packageManager.queryIntentActivities(testIntent,PackageManager.MATCH_DEFAULT_ONLY);
+        List list = packageManager.queryIntentActivities(testIntent,PackageManager.MATCH_DEFAULT_ONLY);
         if (list.size()>0){
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_VIEW);
