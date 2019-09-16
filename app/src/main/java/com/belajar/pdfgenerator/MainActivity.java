@@ -3,6 +3,7 @@ package com.belajar.pdfgenerator;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.FileProvider;
 
 import android.Manifest;
 import android.app.Activity;
@@ -146,8 +147,9 @@ public class MainActivity extends AppCompatActivity {
         if (list.size()>0){
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_VIEW);
-            Uri uri = Uri.fromFile(pdfFile);
+            Uri uri = FileProvider.getUriForFile(this, "com.belajar.pdfgenerator.fileprovider",pdfFile );
             intent.setDataAndType(uri,"application/pdf");
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             startActivity(intent);
         }else {
             Toast.makeText(this,"Download aplikasi pdf viewer untuk melihat hasil generate",Toast.LENGTH_SHORT).show();
